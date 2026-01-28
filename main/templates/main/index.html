@@ -1,0 +1,300 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">{{ text.hero_tag }}</p>
+        <h1>{{ text.hero_title }}</h1>
+        <p class="hero-text">{{ text.hero_text }}</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#services">{{ text.hero_cta }}</a>
+          <a class="btn ghost" href="#contacts">{{ text.hero_secondary }}</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <span class="stat-value">20+</span>
+            <span class="stat-label">{{ text.stats_1 }}</span>
+          </div>
+          <div>
+            <span class="stat-value">120+</span>
+            <span class="stat-label">{{ text.stats_2 }}</span>
+          </div>
+          <div>
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">{{ text.stats_3 }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="panel-card">
+          <h3>{{ text.card_title }}</h3>
+          <p>{{ text.card_text }}</p>
+          <div class="panel-highlight">
+            <span>{{ text.card_deadline }}</span>
+            <strong>30.01.2026</strong>
+          </div>
+          <a class="panel-link" href="mailto:omioc2023@yandex.kz">omioc2023@yandex.kz</a>
+        </div>
+        <div class="panel-card secondary">
+          <h3>{{ text.card_integrations }}</h3>
+          <p>{{ text.card_integrations_text }}</p>
+          <div class="panel-links">
+            <a href="https://adilet.zan.kz/rus" target="_blank" rel="noreferrer">adilet.zan.kz</a>
+            <a href="https://goszakup.gov.kz/" target="_blank" rel="noreferrer">
+              goszakup.gov.kz
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ text.about_title }}</h2>
+        <p>{{ text.about_text }}</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>{{ text.mission_title }}</h3>
+          <p>{{ text.mission_text }}</p>
+        </div>
+        <div class="about-card">
+          <h3>{{ text.values_title }}</h3>
+          <ul>
+            <li>{{ text.values_1 }}</li>
+            <li>{{ text.values_2 }}</li>
+            <li>{{ text.values_3 }}</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h3>{{ text.history_title }}</h3>
+          <p>{{ text.history_text }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section muted" id="structure">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ text.structure_title }}</h2>
+        <p>{{ text.structure_text }}</p>
+      </div>
+      <div class="structure-grid">
+        {% for unit in structure_units %}
+          <div class="structure-card">
+            <h3>{% t unit "title" %}</h3>
+            <p>{% t unit "description" %}</p>
+          </div>
+        {% empty %}
+          <div class="structure-card">
+            <h3>{{ text.structure_title }}</h3>
+            <p>{{ text.structure_text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="branch-panel">
+        <div>
+          <h4>{{ text.branches_title }}</h4>
+          <p>{{ text.structure_text }}</p>
+        </div>
+        <div class="branch-grid">
+          {% for branch in branches %}
+            <div class="branch-card">
+              <h5>{% t branch "name" %}</h5>
+              <span>{% t branch "location" %}</span>
+              <p>{% t branch "description" %}</p>
+            </div>
+          {% empty %}
+            <div class="branch-card">
+              <h5>Астана</h5>
+              <span>Центральный филиал</span>
+              <p>Координация исследований и методологическая поддержка регионов.</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ text.services_title }}</h2>
+        <p>{{ text.services_text }}</p>
+      </div>
+      <div class="services-grid">
+        {% for service in services %}
+          <article class="service-card">
+            <h3>{% t service "title" %}</h3>
+            <p>{% t service "description" %}</p>
+          </article>
+        {% empty %}
+          <article class="service-card">
+            <h3>Диагностика заболеваний</h3>
+            <p>Бактериология, вирусология, ПЦР и серологические исследования.</p>
+          </article>
+        {% endfor %}
+      </div>
+      <div class="service-links">
+        <a href="#legal" class="link-card">{{ text.legal_title }}</a>
+        <a href="#training" class="link-card">{{ text.training_title }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section muted" id="training">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ text.training_title }}</h2>
+        <p>{{ text.training_text }}</p>
+      </div>
+      <div class="training-grid">
+        {% for program in training_programs %}
+          <div class="training-card">
+            <h3>{% t program "title" %}</h3>
+            <p>{% t program "description" %}</p>
+          </div>
+        {% empty %}
+          <div class="training-card">
+            <h3>Программы обучения</h3>
+            <p>Курсы по лабораторной диагностике, биобезопасности и стандартам качества.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="legal">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ text.legal_title }}</h2>
+        <p>{{ text.legal_text }}</p>
+      </div>
+      <div class="legal-list">
+        {% for document in legal_documents %}
+          <div class="legal-item">
+            <span>{% t document "title" %}</span>
+            <a href="{{ document.link_url }}" target="_blank" rel="noreferrer">{{ document.link_url }}</a>
+          </div>
+        {% empty %}
+          <div class="legal-item">
+            <span>Ветеринарные правила и инструкции (обновлено 2025).</span>
+            <a href="https://adilet.zan.kz/rus" target="_blank" rel="noreferrer">adilet.zan.kz</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section muted" id="news">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ text.news_title }}</h2>
+        <p>{{ text.news_text }}</p>
+      </div>
+      <div class="news-grid">
+        {% for item in news_items %}
+          <article class="news-card">
+            <p class="news-date">{{ item.published_at|date:"d.m.Y" }}</p>
+            <h3>{% t item "title" %}</h3>
+            <p>{% t item "summary" %}</p>
+          </article>
+        {% empty %}
+          <article class="news-card">
+            <p class="news-date">28.01.2026</p>
+            <h3>Объявлен конкурс на новый сайт</h3>
+            <p>Прием заявок до 30 января, конкурсных работ — до 13 февраля 2026 года.</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="proposals">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ text.proposal_title }}</h2>
+        <p>{{ text.proposal_text }}</p>
+      </div>
+      <div class="proposal-grid">
+        {% for proposal in proposals %}
+          <div class="proposal-card">
+            <h3>{% t proposal "title" %}</h3>
+            <p>{% t proposal "description" %}</p>
+          </div>
+        {% empty %}
+          <div class="proposal-card">
+            <h3>Цифровая витрина услуг</h3>
+            <p>Онлайн-калькулятор стоимости, подача заявок и отслеживание статуса.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section muted" id="contacts">
+    <div class="container contacts-grid">
+      <div>
+        <div class="section-head">
+          <h2>{{ text.contacts_title }}</h2>
+          <p>{{ text.contacts_text }}</p>
+        </div>
+        <div class="contact-info">
+          <div>
+            <span>{{ text.contacts_address_label }}</span>
+            <strong>{{ text.contacts_address }}</strong>
+          </div>
+          <div>
+            <span>{{ text.contacts_email_label }}</span>
+            <strong>omioc2023@yandex.kz</strong>
+          </div>
+          <div>
+            <span>{{ text.contacts_phone_label }}</span>
+            <strong>8 777 673 52 06 (Саят)</strong>
+            <strong>8 706 418 70 50 (Аружан)</strong>
+          </div>
+        </div>
+        <div class="contact-links">
+          <a class="btn ghost" href="https://rvl.kz/ru/" target="_blank" rel="noreferrer">rvl.kz</a>
+          <a class="btn ghost" href="https://goszakup.gov.kz/" target="_blank" rel="noreferrer">
+            goszakup.gov.kz
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" method="post">
+        {% csrf_token %}
+        <h3>{{ text.form_title }}</h3>
+        {% if messages %}
+          <div class="form-messages">
+            {% for message in messages %}
+              <p class="message {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <label>
+          <span>{{ text.form_name }}</span>
+          {{ form.name }}
+        </label>
+        <label>
+          <span>{{ text.form_email }}</span>
+          {{ form.email }}
+        </label>
+        <label>
+          <span>{{ text.form_subject }}</span>
+          {{ form.subject }}
+        </label>
+        <label>
+          <span>{{ text.form_message }}</span>
+          {{ form.message }}
+        </label>
+        <button class="btn primary" type="submit">{{ text.form_submit }}</button>
+        <p class="form-note">{{ text.form_note }}</p>
+      </form>
+    </div>
+  </section>
+{% endblock %}

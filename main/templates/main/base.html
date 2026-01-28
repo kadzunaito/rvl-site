@@ -1,0 +1,75 @@
+{% load static %}
+<!doctype html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ text.hero_title }}</title>
+    <meta name="description" content="{{ text.about_text }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'main/styles.css' %}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="brand-mark">RVL</div>
+          <div class="brand-text">
+            <p class="brand-title">{{ text.footer_title }}</p>
+            <p class="brand-subtitle">{{ text.footer_text }}</p>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="#about">{{ text.nav_about }}</a>
+          <a href="#services">{{ text.nav_services }}</a>
+          <a href="#structure">{{ text.nav_structure }}</a>
+          <a href="#training">{{ text.nav_training }}</a>
+          <a href="#news">{{ text.nav_news }}</a>
+          <a href="#contacts">{{ text.nav_contacts }}</a>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <a class="lang-btn {% if lang == 'ru' %}active{% endif %}" href="/">RU</a>
+          <a class="lang-btn {% if lang == 'kk' %}active{% endif %}" href="/lang/kk/">KZ</a>
+          <a class="lang-btn {% if lang == 'en' %}active{% endif %}" href="/lang/en/">EN</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="footer-title">{{ text.footer_title }}</p>
+          <p class="footer-text">{{ text.footer_text }}</p>
+        </div>
+        <div>
+          <p class="footer-label">{{ text.footer_links }}</p>
+          <div class="footer-links">
+            <a href="#services">{{ text.nav_services }}</a>
+            <a href="#legal">{{ text.legal_title }}</a>
+            <a href="#proposals">{{ text.proposal_title }}</a>
+            <a href="#contacts">{{ text.nav_contacts }}</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-label">{{ text.footer_access }}</p>
+          <p class="footer-text">{{ text.footer_access_text }}</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 RVL</span>
+        <span>{{ text.footer_rights }}</span>
+      </div>
+    </footer>
+
+    <script src="{% static 'main/site.js' %}"></script>
+  </body>
+</html>
