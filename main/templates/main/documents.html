@@ -1,0 +1,34 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.documents_title }}</h1>
+      <p>{{ text.documents_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="tab-bar">
+        <button class="tab-btn active" data-category="all">{{ text.documents_all }}</button>
+        {% for category in document_categories %}
+          <button class="tab-btn" data-category="cat-{{ category.id }}">{% t category "title" %}</button>
+        {% endfor %}
+      </div>
+      <div class="document-grid">
+        {% for doc in documents %}
+          <div class="document-card" data-category="cat-{{ doc.category.id }}">
+            <h3>{% t doc "title" %}</h3>
+            {% if doc.published_at %}
+              <span class="document-date">{{ doc.published_at|date:"d.m.Y" }}</span>
+            {% endif %}
+            <a href="{{ doc.link_url }}" target="_blank" rel="noreferrer">{{ text.documents_open }}</a>
+          </div>
+        {% empty %}
+          <p>{{ text.documents_empty }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

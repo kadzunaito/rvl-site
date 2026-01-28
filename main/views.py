@@ -4,13 +4,19 @@ from django.shortcuts import redirect, render
 
 from .forms import FeedbackForm
 from .models import (
+    AccreditationItem,
     Branch,
+    DocumentCategory,
+    DocumentEntry,
+    FAQItem,
+    KPI,
     LegalDocument,
     NewsItem,
     Proposal,
     Service,
     StructureUnit,
     TrainingProgram,
+    Vacancy,
 )
 from .translations import TEXT
 
@@ -41,6 +47,13 @@ def services(request, lang="ru"):
     if not isinstance(context, dict):
         return context
     return render(request, "main/services.html", context)
+
+
+def documents(request, lang="ru"):
+    context = _build_context(request, lang, "documents")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/documents.html", context)
 
 
 def training(request, lang="ru"):
@@ -92,6 +105,34 @@ def proposals(request, lang="ru"):
     return render(request, "main/proposals.html", context)
 
 
+def quality(request, lang="ru"):
+    context = _build_context(request, lang, "quality")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/quality.html", context)
+
+
+def careers(request, lang="ru"):
+    context = _build_context(request, lang, "careers")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/careers.html", context)
+
+
+def faq(request, lang="ru"):
+    context = _build_context(request, lang, "faq")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/faq.html", context)
+
+
+def dashboard(request, lang="ru"):
+    context = _build_context(request, lang, "dashboard")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/dashboard.html", context)
+
+
 def contacts(request, lang="ru"):
     context = _build_context(request, lang, "contacts")
     if not isinstance(context, dict):
@@ -118,6 +159,7 @@ def _build_context(request, lang, page):
         "lang": lang,
         "page": page,
         "text": text,
+        "kpis": KPI.objects.all(),
         "services": Service.objects.all(),
         "training_programs": TrainingProgram.objects.all(),
         "legal_documents": LegalDocument.objects.all(),
@@ -125,6 +167,11 @@ def _build_context(request, lang, page):
         "proposals": Proposal.objects.all(),
         "structure_units": StructureUnit.objects.all(),
         "branches": Branch.objects.all(),
+        "document_categories": DocumentCategory.objects.all(),
+        "documents": DocumentEntry.objects.select_related("category"),
+        "accreditations": AccreditationItem.objects.all(),
+        "vacancies": Vacancy.objects.filter(is_active=True),
+        "faqs": FAQItem.objects.all(),
         "form": form,
     }
 

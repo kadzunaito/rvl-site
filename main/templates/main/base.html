@@ -34,11 +34,23 @@
           <a href="{% if lang == 'ru' %}/structure/{% else %}/structure/{{ lang }}/{% endif %}">
             {{ text.nav_structure }}
           </a>
+          <a href="{% if lang == 'ru' %}/documents/{% else %}/documents/{{ lang }}/{% endif %}">
+            {{ text.nav_documents }}
+          </a>
           <a href="{% if lang == 'ru' %}/training/{% else %}/training/{{ lang }}/{% endif %}">
             {{ text.nav_training }}
           </a>
           <a href="{% if lang == 'ru' %}/news/{% else %}/news/{{ lang }}/{% endif %}">
             {{ text.nav_news }}
+          </a>
+          <a href="{% if lang == 'ru' %}/quality/{% else %}/quality/{{ lang }}/{% endif %}">
+            {{ text.nav_quality }}
+          </a>
+          <a href="{% if lang == 'ru' %}/careers/{% else %}/careers/{{ lang }}/{% endif %}">
+            {{ text.nav_careers }}
+          </a>
+          <a href="{% if lang == 'ru' %}/faq/{% else %}/faq/{{ lang }}/{% endif %}">
+            {{ text.nav_faq }}
           </a>
           <a href="{% if lang == 'ru' %}/contacts/{% else %}/contacts/{{ lang }}/{% endif %}">
             {{ text.nav_contacts }}
@@ -76,6 +88,9 @@
             </a>
             <a href="{% if lang == 'ru' %}/legal/{% else %}/legal/{{ lang }}/{% endif %}">
               {{ text.legal_title }}
+            </a>
+            <a href="{% if lang == 'ru' %}/documents/{% else %}/documents/{{ lang }}/{% endif %}">
+              {{ text.documents_title }}
             </a>
             <a href="{% if lang == 'ru' %}/proposals/{% else %}/proposals/{{ lang }}/{% endif %}">
               {{ text.proposal_title }}

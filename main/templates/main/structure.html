@@ -23,11 +23,20 @@
           <h4>{{ text.branches_title }}</h4>
           <p>{{ text.structure_text }}</p>
         </div>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">{{ text.filter_all }}</button>
+          <button class="filter-btn" data-filter="diagnostics">{{ text.filter_diagnostics }}</button>
+          <button class="filter-btn" data-filter="safety">{{ text.filter_safety }}</button>
+          <button class="filter-btn" data-filter="monitoring">{{ text.filter_monitoring }}</button>
+        </div>
         <div class="branch-grid">
           {% for branch in branches %}
-            <div class="branch-card">
+            <div class="branch-card" data-focus="{{ branch.focus_en|default:'diagnostics'|lower }}">
               <h5>{% t branch "name" %}</h5>
               <span>{% t branch "location" %}</span>
+              {% if branch.focus_ru %}
+                <span class="branch-focus">{% t branch "focus" %}</span>
+              {% endif %}
               <p>{% t branch "description" %}</p>
             </div>
           {% endfor %}

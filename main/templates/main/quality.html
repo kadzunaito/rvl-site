@@ -1,0 +1,26 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.quality_title }}</h1>
+      <p>{{ text.quality_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="timeline">
+        {% for item in accreditations %}
+          <div class="timeline-item">
+            <span class="timeline-date">{{ item.issued_at|date:"d.m.Y" }}</span>
+            <h3>{% t item "title" %}</h3>
+            <p>{% t item "description" %}</p>
+          </div>
+        {% empty %}
+          <p>{{ text.quality_empty }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.faq_title }}</h1>
+      <p>{{ text.faq_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="faq-list">
+        {% for faq in faqs %}
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>{% t faq "question" %}</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">{% t faq "answer" %}</div>
+          </div>
+        {% empty %}
+          <p>{{ text.faq_empty }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

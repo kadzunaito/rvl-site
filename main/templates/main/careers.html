@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.careers_title }}</h1>
+      <p>{{ text.careers_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="vacancy-grid">
+        {% for vacancy in vacancies %}
+          <div class="vacancy-card">
+            <h3>{% t vacancy "title" %}</h3>
+            <span>{% t vacancy "location" %}</span>
+            <p>{% t vacancy "description" %}</p>
+            {% if vacancy.deadline %}
+              <div class="vacancy-deadline">{{ text.careers_deadline }} {{ vacancy.deadline|date:"d.m.Y" }}</div>
+            {% endif %}
+          </div>
+        {% empty %}
+          <p>{{ text.careers_empty }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

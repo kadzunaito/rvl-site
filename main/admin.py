@@ -1,14 +1,20 @@
 from django.contrib import admin
 
 from .models import (
+    AccreditationItem,
     Branch,
+    DocumentCategory,
+    DocumentEntry,
+    FAQItem,
     FeedbackMessage,
+    KPI,
     LegalDocument,
     NewsItem,
     Proposal,
     Service,
     StructureUnit,
     TrainingProgram,
+    Vacancy,
 )
 
 
@@ -51,7 +57,42 @@ class StructureUnitAdmin(admin.ModelAdmin):
 
 @admin.register(Branch)
 class BranchAdmin(admin.ModelAdmin):
-    list_display = ("name_ru", "location_ru")
+    list_display = ("name_ru", "location_ru", "focus_ru")
+
+
+@admin.register(KPI)
+class KPIAdmin(admin.ModelAdmin):
+    list_display = ("label_ru", "value", "suffix", "order")
+    list_editable = ("order",)
+
+
+@admin.register(DocumentCategory)
+class DocumentCategoryAdmin(admin.ModelAdmin):
+    list_display = ("title_ru", "order")
+    list_editable = ("order",)
+
+
+@admin.register(DocumentEntry)
+class DocumentEntryAdmin(admin.ModelAdmin):
+    list_display = ("title_ru", "category", "published_at")
+    list_filter = ("category",)
+
+
+@admin.register(AccreditationItem)
+class AccreditationItemAdmin(admin.ModelAdmin):
+    list_display = ("title_ru", "issued_at")
+
+
+@admin.register(Vacancy)
+class VacancyAdmin(admin.ModelAdmin):
+    list_display = ("title_ru", "location_ru", "deadline", "is_active")
+    list_filter = ("is_active",)
+
+
+@admin.register(FAQItem)
+class FAQItemAdmin(admin.ModelAdmin):
+    list_display = ("question_ru", "order")
+    list_editable = ("order",)
 
 
 @admin.register(FeedbackMessage)

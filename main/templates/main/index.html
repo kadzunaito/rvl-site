@@ -2,8 +2,8 @@
 {% load i18n_extras %}
 
 {% block content %}
-  <section class="hero">
-    <div class="container hero-grid">
+      <section class="hero">
+        <div class="container hero-grid">
       <div class="hero-content">
         <p class="eyebrow">{{ text.hero_tag }}</p>
         <h1>{{ text.hero_title }}</h1>
@@ -52,8 +52,43 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+        </div>
+      </section>
+
+      <section class="section muted" id="dashboard">
+        <div class="container">
+          <div class="section-head">
+            <h2>{{ text.dashboard_title }}</h2>
+            <p>{{ text.dashboard_text }}</p>
+          </div>
+          <div class="kpi-grid">
+            {% for kpi in kpis %}
+              <div class="kpi-card">
+                <span class="kpi-value">{{ kpi.value }}{% if kpi.suffix %} {{ kpi.suffix }}{% endif %}</span>
+                <p>{% t kpi "label" %}</p>
+              </div>
+            {% empty %}
+              <div class="kpi-card">
+                <span class="kpi-value">250K</span>
+                <p>исследований в год</p>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-value">48 ч</span>
+                <p>средний срок ответа</p>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-value">17</span>
+                <p>регионов охвата</p>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="dashboard-links">
+            <a class="btn ghost" href="{% if lang == 'ru' %}/dashboard/{% else %}/dashboard/{{ lang }}/{% endif %}">
+              {{ text.dashboard_open }}
+            </a>
+          </div>
+        </div>
+      </section>
 
   <section class="section" id="about">
     <div class="container">
