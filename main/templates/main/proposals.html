@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.proposal_title }}</h1>
+      <p>{{ text.proposal_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="proposal-grid">
+        {% for proposal in proposals %}
+          <div class="proposal-card">
+            <h3>{% t proposal "title" %}</h3>
+            <p>{% t proposal "description" %}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

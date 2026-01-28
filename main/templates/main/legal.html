@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.legal_title }}</h1>
+      <p>{{ text.legal_text }}</p>
+      <form class="search-bar" method="get">
+        <input class="search-input" type="text" name="q" value="{{ query }}" placeholder="{{ text.legal_search }}" />
+        <button class="btn primary" type="submit">{{ text.search_button }}</button>
+      </form>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="legal-list">
+        {% for document in legal_documents %}
+          <div class="legal-item">
+            <span>{% t document "title" %}</span>
+            <a href="{{ document.link_url }}" target="_blank" rel="noreferrer">{{ document.link_url }}</a>
+          </div>
+        {% empty %}
+          <p>{{ text.legal_empty }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

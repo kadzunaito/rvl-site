@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.contacts_title }}</h1>
+      <p>{{ text.contacts_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contacts-grid">
+      <div>
+        <div class="contact-info">
+          <div>
+            <span>{{ text.contacts_address_label }}</span>
+            <strong>{{ text.contacts_address }}</strong>
+          </div>
+          <div>
+            <span>{{ text.contacts_email_label }}</span>
+            <strong>omioc2023@yandex.kz</strong>
+          </div>
+          <div>
+            <span>{{ text.contacts_phone_label }}</span>
+            <strong>8 777 673 52 06 (Саят)</strong>
+            <strong>8 706 418 70 50 (Аружан)</strong>
+          </div>
+        </div>
+        <div class="contact-links">
+          <a class="btn ghost" href="https://rvl.kz/ru/" target="_blank" rel="noreferrer">rvl.kz</a>
+          <a class="btn ghost" href="https://goszakup.gov.kz/" target="_blank" rel="noreferrer">
+            goszakup.gov.kz
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" method="post">
+        {% csrf_token %}
+        <h3>{{ text.form_title }}</h3>
+        {% if messages %}
+          <div class="form-messages">
+            {% for message in messages %}
+              <p class="message {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <label>
+          <span>{{ text.form_name }}</span>
+          {{ form.name }}
+        </label>
+        <label>
+          <span>{{ text.form_email }}</span>
+          {{ form.email }}
+        </label>
+        <label>
+          <span>{{ text.form_subject }}</span>
+          {{ form.subject }}
+        </label>
+        <label>
+          <span>{{ text.form_message }}</span>
+          {{ form.message }}
+        </label>
+        <button class="btn primary" type="submit">{{ text.form_submit }}</button>
+        <p class="form-note">{{ text.form_note }}</p>
+      </form>
+    </div>
+  </section>
+{% endblock %}

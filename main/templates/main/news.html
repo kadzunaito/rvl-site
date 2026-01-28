@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.news_title }}</h1>
+      <p>{{ text.news_text }}</p>
+      <form class="search-bar" method="get">
+        <input class="search-input" type="text" name="q" value="{{ query }}" placeholder="{{ text.news_search }}" />
+        <button class="btn primary" type="submit">{{ text.search_button }}</button>
+      </form>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="news-grid">
+        {% for item in news_items %}
+          <article class="news-card">
+            <p class="news-date">{{ item.published_at|date:"d.m.Y" }}</p>
+            <h3>{% t item "title" %}</h3>
+            <p>{% t item "summary" %}</p>
+          </article>
+        {% empty %}
+          <p>{{ text.news_empty }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

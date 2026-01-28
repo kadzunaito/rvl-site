@@ -9,8 +9,12 @@
         <h1>{{ text.hero_title }}</h1>
         <p class="hero-text">{{ text.hero_text }}</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#services">{{ text.hero_cta }}</a>
-          <a class="btn ghost" href="#contacts">{{ text.hero_secondary }}</a>
+          <a class="btn primary" href="{% if lang == 'ru' %}/services/{% else %}/services/{{ lang }}/{% endif %}">
+            {{ text.hero_cta }}
+          </a>
+          <a class="btn ghost" href="{% if lang == 'ru' %}/contacts/{% else %}/contacts/{{ lang }}/{% endif %}">
+            {{ text.hero_secondary }}
+          </a>
         </div>
         <div class="hero-stats">
           <div>
@@ -141,8 +145,12 @@
         {% endfor %}
       </div>
       <div class="service-links">
-        <a href="#legal" class="link-card">{{ text.legal_title }}</a>
-        <a href="#training" class="link-card">{{ text.training_title }}</a>
+        <a href="{% if lang == 'ru' %}/legal/{% else %}/legal/{{ lang }}/{% endif %}" class="link-card">
+          {{ text.legal_title }}
+        </a>
+        <a href="{% if lang == 'ru' %}/training/{% else %}/training/{{ lang }}/{% endif %}" class="link-card">
+          {{ text.training_title }}
+        </a>
       </div>
     </div>
   </section>

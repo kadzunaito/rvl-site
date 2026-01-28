@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.db.models import Q
 from django.shortcuts import redirect, render
 
 from .forms import FeedbackForm
@@ -15,6 +16,90 @@ from .translations import TEXT
 
 
 def home(request, lang="ru"):
+    context = _build_context(request, lang, "home")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/index.html", context)
+
+
+def about(request, lang="ru"):
+    context = _build_context(request, lang, "about")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/about.html", context)
+
+
+def structure(request, lang="ru"):
+    context = _build_context(request, lang, "structure")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/structure.html", context)
+
+
+def services(request, lang="ru"):
+    context = _build_context(request, lang, "services")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/services.html", context)
+
+
+def training(request, lang="ru"):
+    context = _build_context(request, lang, "training")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/training.html", context)
+
+
+def legal(request, lang="ru"):
+    context = _build_context(request, lang, "legal")
+    if not isinstance(context, dict):
+        return context
+    query = request.GET.get("q", "").strip()
+    legal_documents = context["legal_documents"]
+    if query:
+        legal_documents = legal_documents.filter(
+            Q(title_ru__icontains=query)
+            | Q(title_kk__icontains=query)
+            | Q(title_en__icontains=query)
+        )
+    context.update({"legal_documents": legal_documents, "query": query})
+    return render(request, "main/legal.html", context)
+
+
+def news(request, lang="ru"):
+    context = _build_context(request, lang, "news")
+    if not isinstance(context, dict):
+        return context
+    query = request.GET.get("q", "").strip()
+    news_items = context["news_items"]
+    if query:
+        news_items = news_items.filter(
+            Q(title_ru__icontains=query)
+            | Q(title_kk__icontains=query)
+            | Q(title_en__icontains=query)
+            | Q(summary_ru__icontains=query)
+            | Q(summary_kk__icontains=query)
+            | Q(summary_en__icontains=query)
+        )
+    context.update({"news_items": news_items, "query": query})
+    return render(request, "main/news.html", context)
+
+
+def proposals(request, lang="ru"):
+    context = _build_context(request, lang, "proposals")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/proposals.html", context)
+
+
+def contacts(request, lang="ru"):
+    context = _build_context(request, lang, "contacts")
+    if not isinstance(context, dict):
+        return context
+    return render(request, "main/contacts.html", context)
+
+
+def _build_context(request, lang, page):
     if lang not in TEXT:
         lang = "ru"
     text = TEXT[lang]
@@ -29,19 +114,19 @@ def home(request, lang="ru"):
             return redirect(request.path)
         messages.error(request, text["form_error"])
 
-    context = {
+    return {
         "lang": lang,
+        "page": page,
         "text": text,
         "services": Service.objects.all(),
         "training_programs": TrainingProgram.objects.all(),
         "legal_documents": LegalDocument.objects.all(),
-        "news_items": NewsItem.objects.filter(is_active=True)[:6],
+        "news_items": NewsItem.objects.filter(is_active=True),
         "proposals": Proposal.objects.all(),
         "structure_units": StructureUnit.objects.all(),
-        "branches": Branch.objects.all()[:6],
+        "branches": Branch.objects.all(),
         "form": form,
     }
-    return render(request, "main/index.html", context)
 
 
 def _apply_form_placeholders(form, text):

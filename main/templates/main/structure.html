@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+{% load i18n_extras %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.structure_title }}</h1>
+      <p>{{ text.structure_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="structure-grid">
+        {% for unit in structure_units %}
+          <div class="structure-card">
+            <h3>{% t unit "title" %}</h3>
+            <p>{% t unit "description" %}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="branch-panel">
+        <div>
+          <h4>{{ text.branches_title }}</h4>
+          <p>{{ text.structure_text }}</p>
+        </div>
+        <div class="branch-grid">
+          {% for branch in branches %}
+            <div class="branch-card">
+              <h5>{% t branch "name" %}</h5>
+              <span>{% t branch "location" %}</span>
+              <p>{% t branch "description" %}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="map-panel">
+        <div>
+          <h4>{{ text.map_title }}</h4>
+          <p>{{ text.map_text }}</p>
+        </div>
+        <iframe
+          class="map-frame"
+          title="RVL map"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=71.3607%2C51.1224%2C71.5611%2C51.2055&layer=mapnik"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+{% endblock %}

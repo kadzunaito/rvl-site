@@ -25,17 +25,35 @@
           </div>
         </div>
         <nav class="main-nav">
-          <a href="#about">{{ text.nav_about }}</a>
-          <a href="#services">{{ text.nav_services }}</a>
-          <a href="#structure">{{ text.nav_structure }}</a>
-          <a href="#training">{{ text.nav_training }}</a>
-          <a href="#news">{{ text.nav_news }}</a>
-          <a href="#contacts">{{ text.nav_contacts }}</a>
+          <a href="{% if lang == 'ru' %}/about/{% else %}/about/{{ lang }}/{% endif %}">
+            {{ text.nav_about }}
+          </a>
+          <a href="{% if lang == 'ru' %}/services/{% else %}/services/{{ lang }}/{% endif %}">
+            {{ text.nav_services }}
+          </a>
+          <a href="{% if lang == 'ru' %}/structure/{% else %}/structure/{{ lang }}/{% endif %}">
+            {{ text.nav_structure }}
+          </a>
+          <a href="{% if lang == 'ru' %}/training/{% else %}/training/{{ lang }}/{% endif %}">
+            {{ text.nav_training }}
+          </a>
+          <a href="{% if lang == 'ru' %}/news/{% else %}/news/{{ lang }}/{% endif %}">
+            {{ text.nav_news }}
+          </a>
+          <a href="{% if lang == 'ru' %}/contacts/{% else %}/contacts/{{ lang }}/{% endif %}">
+            {{ text.nav_contacts }}
+          </a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language switch">
-          <a class="lang-btn {% if lang == 'ru' %}active{% endif %}" href="/">RU</a>
-          <a class="lang-btn {% if lang == 'kk' %}active{% endif %}" href="/lang/kk/">KZ</a>
-          <a class="lang-btn {% if lang == 'en' %}active{% endif %}" href="/lang/en/">EN</a>
+          {% if page == 'home' %}
+            <a class="lang-btn {% if lang == 'ru' %}active{% endif %}" href="/">RU</a>
+            <a class="lang-btn {% if lang == 'kk' %}active{% endif %}" href="/lang/kk/">KZ</a>
+            <a class="lang-btn {% if lang == 'en' %}active{% endif %}" href="/lang/en/">EN</a>
+          {% else %}
+            <a class="lang-btn {% if lang == 'ru' %}active{% endif %}" href="/{{ page }}/">RU</a>
+            <a class="lang-btn {% if lang == 'kk' %}active{% endif %}" href="/{{ page }}/kk/">KZ</a>
+            <a class="lang-btn {% if lang == 'en' %}active{% endif %}" href="/{{ page }}/en/">EN</a>
+          {% endif %}
         </div>
       </div>
     </header>
@@ -53,10 +71,18 @@
         <div>
           <p class="footer-label">{{ text.footer_links }}</p>
           <div class="footer-links">
-            <a href="#services">{{ text.nav_services }}</a>
-            <a href="#legal">{{ text.legal_title }}</a>
-            <a href="#proposals">{{ text.proposal_title }}</a>
-            <a href="#contacts">{{ text.nav_contacts }}</a>
+            <a href="{% if lang == 'ru' %}/services/{% else %}/services/{{ lang }}/{% endif %}">
+              {{ text.nav_services }}
+            </a>
+            <a href="{% if lang == 'ru' %}/legal/{% else %}/legal/{{ lang }}/{% endif %}">
+              {{ text.legal_title }}
+            </a>
+            <a href="{% if lang == 'ru' %}/proposals/{% else %}/proposals/{{ lang }}/{% endif %}">
+              {{ text.proposal_title }}
+            </a>
+            <a href="{% if lang == 'ru' %}/contacts/{% else %}/contacts/{{ lang }}/{% endif %}">
+              {{ text.nav_contacts }}
+            </a>
           </div>
         </div>
         <div>

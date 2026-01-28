@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1>{{ text.about_title }}</h1>
+      <p>{{ text.about_text }}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>{{ text.mission_title }}</h3>
+          <p>{{ text.mission_text }}</p>
+        </div>
+        <div class="about-card">
+          <h3>{{ text.values_title }}</h3>
+          <ul>
+            <li>{{ text.values_1 }}</li>
+            <li>{{ text.values_2 }}</li>
+            <li>{{ text.values_3 }}</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h3>{{ text.history_title }}</h3>
+          <p>{{ text.history_text }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
