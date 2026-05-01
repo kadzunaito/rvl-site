@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>жыгыттер жыгыттер</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url(data:image/jpeg;base64,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);
+    background-size: fill;
+    text-align: center;
+    color: black;
+    overflow: hidden;
+}
+
+/* GIF */
+.cat img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+    border-radius: 20px;
+}
+
+/* SCREENS */
+.screen {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.active { display: flex; }
+
+.card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 25px;
+    width: 340px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* BUTTONS */
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    background: white;
+    color: #4facfe;
+    font-weight: bold;
+}
+
+/* STORY */
+.story p {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeIn 0.6s ease forwards;
+    margin: 10px 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes show {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fall {
+    from { transform: translateY(-50px); }
+    to { transform: translateY(500px); opacity:0; }
+}
+
+/* ВЗРЫВ */
+.particle{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    font-size: 32px;
+    animation: explode 1s forwards;
+    pointer-events:none;
+}
+
+@keyframes explode {
+    0% { transform: translate(-50%, -50%) scale(0); opacity:1; }
+    100% {
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)));
+        opacity:0;
+    }
+}
+
+video {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+/* эффект появления подарка */
+.gift-appear {
+    animation: popIn 0.6s ease forwards;
+    transform: scale(0);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.gift-video {
+    transform: scale(0.3);
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.gift-video.show {
+    transform: scale(1);
+    opacity: 1;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- START -->
+<div id="start" class="screen active">
+    <div class="card">
+        <div class="cat">
+            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
+        </div>
+
+        <h2>Ты готов?</h2>
+
+        <button onclick="start()">Да</button>
+        <button onclick="no()">Нет</button>
+    </div>
+</div>
+
+<!-- NO SCREEN -->
+<div id="noScreen" class="screen">
+    <div class="card">
+        <div class="cat">
+            <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif">
+        </div>
+
+        <h2>пидора ответ</h2>
+
+        <button onclick="back()">я не такой</button>
+        <button onclick="back()">может быть</button>
+    </div>
+</div>
+
+<!-- STORY -->
+<div id="story" class="screen">
+    <div class="card">
+        <h2>Жыгыттер жыгыттер</h2>
+
+        <div class="story" id="storyText"></div>
+
+        <div id="videoBlock" style="display:none; margin-top:15px;">
+            <video id="video" autoplay controls>
+                <source src="дастойни.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <button onclick="toQuiz()">Дальше</button>
+    </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="screen">
+    <div class="card">
+        <h3 id="q"></h3>
+        <button onclick="answer(0)" id="a1"></button>
+        <button onclick="answer(1)" id="a2"></button>
+        <p id="progress"></p>
+    </div>
+    <button onclick="checkTextAnswer()" id="textBtn" style="display:none;">
+    Дальше
+</button>
+</div>
+
+<script>
+
+/* START STORY */
+function startStory(){
+    const box = document.getElementById("storyText");
+    box.innerHTML = "";
+
+    const lines = [
+        "Біздің самый лучший, красавчик достарымыз",
+        "Поздравляем вас с 7 мая и желаем всего самого лучшего!",
+        "Конечно, мы не могли оставить вас без презента🎁",
+        "Но придётся попотеть и доказать, что вы достойны его 😈"
+    ];
+
+    let i = 0;
+
+    function next(){
+        if(i < lines.length){
+            let p = document.createElement("p");
+            p.textContent = lines[i];
+            box.appendChild(p);
+            i++;
+            setTimeout(next, 700);
+        } else {
+            document.getElementById("videoBlock").style.display = "block";
+            document.getElementById("video").play();
+        }
+    }
+
+    next();
+}
+
+/* QUIZ */
+
+let quiz = [
+    {type:"choice", q:"Кто на свете всех милее,и румянее белее?", a:["Мерей и Жанс, спору нет","Конечно вы қыздар, лучше никого нет"], c:0, c:1},
+    {type:"choice", q:"Что вы хотите увидеть в качестве подарка? ", a:["Вы самый лучший подарок","Мы рады любому положительному вашему вниманию"],c:0, c:1},
+    {type:"text", q:"С какой птицы нужно ощипать перья чтобы получилось сразу утро, день, вечер и ночь??Напиши просто название без склонений", c:"утка"},
+    {type:"text", q:"Когда руки бывают тремя местоимениями?Напиши поставив пропущенное слово -Когда они ...", c:"вымыты"},
+    {type:"choice", q:"Как вы думаете мы вас любим и ценим? ", a:["Да","Нет"], c:0, trap:1}
+];
+let i = 0;
+
+function toQuiz(){
+    switchScreen("story","quiz");
+    load();
+}
+
+function load(){
+
+    let item = quiz[i];
+
+    document.getElementById("progress").textContent = `${i+1}/${quiz.length}`;
+
+    // очистка input если есть
+    let oldInput = document.getElementById("textAnswer");
+    if(oldInput) oldInput.remove();
+
+    if(item.type === "choice"){
+
+        document.getElementById("q").textContent = item.q;
+
+        document.getElementById("a1").style.display = "inline-block";
+        document.getElementById("a2").style.display = "inline-block";
+
+        document.getElementById("a1").textContent = item.a[0];
+        document.getElementById("a2").textContent = item.a[1];
+
+    } else {
+
+        document.getElementById("q").textContent = item.q;
+
+        document.getElementById("a1").style.display = "none";
+        document.getElementById("a2").style.display = "none";
+
+       let input = document.createElement("input");
+input.id = "textAnswer";
+input.placeholder = "введите ответ...";
+input.style.padding = "10px";
+input.style.borderRadius = "10px";
+input.style.border = "none";
+input.style.marginTop = "10px";
+input.style.width = "80%";
+
+document.querySelector("#quiz .card").appendChild(input);
+let btn = document.getElementById("textBtn");
+
+if(item.type === "text"){
+    btn.style.display = "inline-block";
+} else {
+    btn.style.display = "none";
+}
+
+// КНОПКА ДАЛЬШЕ
+
+    }
+}
+function checkTextAnswer(){
+    answer(null);
+}
+function answer(x){
+
+    let item = quiz[i];
+
+    // 💀 ЛОВУШКА "Нет"
+    if(item.trap !== undefined && x === 1){
+        switchScreen("start","noScreen"); // или просто noScreen
+        return;
+    }
+let score = 0;
+    // обычные вопросы
+    if(item.type === "choice"){
+
+        if(x === item.c) score++;
+
+    } else if(item.type === "text"){
+
+       let input = document.getElementById("textAnswer");
+let user = (input?.value || "").toLowerCase().trim();
+        let correct = item.c.toLowerCase().trim();
+
+        if(user === correct){
+            score++;
+        }
+    }
+
+    i++;
+
+    if(i >= quiz.length){
+        showTrapScreen();
+    } else {
+        load();
+    }
+}
+/* 🔥 ЛОВУШКА */
+function showTrapScreen(){
+
+    document.getElementById("quiz").innerHTML = `
+    <div class="card">
+        <h2> поймай подарок если сможешь</h2>
+
+        <div style="position:relative;height:180px;">
+            <button id="trapBtn"
+                style="position:absolute;left:80px;top:60px;">
+                🎁 поймай
+            </button>
+        </div>
+    </div>
+    `;
+
+    let btn = document.getElementById("trapBtn");
+
+    function move(){
+        btn.style.left = Math.random()*200 + "px";
+        btn.style.top = Math.random()*120 + "px";
+        setTimeout(move, 400);
+    }
+
+    btn.onclick = () => {
+        showGift();
+    };
+
+    move();
+}
+
+/* 🎁 ПОДАРОК */
+function showGift(){
+
+    document.getElementById("quiz").innerHTML = `
+    <div class="card">
+        <h2>🎁 СЮРПРИЗ</h2>
+
+        <div id="giftBox" style="
+            width:160px;height:160px;
+            background:pink;margin:20px auto;
+            border-radius:20px;
+            display:flex;align-items:center;justify-content:center;
+            cursor:pointer;font-size:50px;
+            transform:scale(0);
+            transition:0.4s ease;
+        ">
+        🎀
+        </div>
+    </div>
+    `;
+
+    let box = document.getElementById("giftBox");
+
+    // 🔥 появляется из ниоткуда
+    setTimeout(()=>{
+        box.style.transform = "scale(1)";
+    },50);
+
+    box.onclick = openGift;
+}
+
+/* 💥 OPEN GIFT */
+function openGift(){
+
+    // 🎶 звук
+    let audio = new Audio("sparkle.mp3");
+    audio.volume = 0.8;
+    audio.play();
+
+    // 💥 взрыв из центра (СИЛЬНЫЙ)
+    for(let i=0;i<80;i++){
+
+        let p = document.createElement("div");
+        p.className = "particle";
+        p.innerHTML = "💗";
+
+        let angle = Math.random()*2*Math.PI;
+        let dist = 300; // 👈 сильнее разлёт
+
+       p.style.setProperty("--x", Math.cos(angle)*dist+"px");
+    p.style.setProperty("--y", Math.sin(angle)*dist+"px");
+
+    p.style.animationDuration = (1.8 + Math.random()*1.5) + "s"; 
+    // 👆 медленнее + разный тайминг
+
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),3000); // 👈 дольше живут
+    }
+
+    // 🎬 задержка → видео появляется как "раскрывшаяся коробка"
+    setTimeout(()=>{
+
+        document.getElementById("quiz").innerHTML = `
+        <div class="card gift-appear">
+            <h2>Поздравляем еще раз с вашим днем ребята, посмотрите видео которое мы подготовили для вас, любим.</h2>
+
+            <video controls>
+                <source src="дастойни.mp4" type="video/mp4">
+            </video>
+        </div>
+        `;
+
+    },700);
+}
+
+/* SWITCH */
+function switchScreen(a,b){
+    document.getElementById(a).classList.remove("active");
+    document.getElementById(b).classList.add("active");
+}
+
+/* START / NO */
+function start(){
+    switchScreen("start","story");
+    startStory();
+}
+
+function no(){
+    switchScreen("start","noScreen");
+}
+
+function back(){
+    switchScreen("noScreen","start");
+}
+
+;
+</script>
+
+</body>
+</html>
